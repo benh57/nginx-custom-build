@@ -65,7 +65,7 @@ fetch_module ngx-fancyindex http://github.com/aperezdc/ngx-fancyindex.git -b v0.
 fetch_module headers-more-nginx-module http://github.com/agentzh/headers-more-nginx-module.git -b v0.25
 
 # AJP module
-fetch_module nginx_ajp_module http://github.com/yaoweibin/nginx_ajp_module.git -b v0.3.0
+fetch_module nginx_ajp_module http://github.com/yaoweibin/nginx_ajp_module.git
 
 # LDAP authentication module
 fetch_module nginx-auth-ldap https://github.com/kvspb/nginx-auth-ldap.git
