@@ -33,7 +33,7 @@ pushd ~
 if [[ "$MANAGE_REPO" == "yes" ]]; then
   echo """[nginx]
 name=nginx repo
-baseurl=http://nginx.org/packages/centos/6/SRPMS/
+baseurl=http://nginx.org/packages/centos/7/SRPMS/
 gpgcheck=0
 enabled=1""" >> nginx.repo
 sudo mv nginx.repo /etc/yum.repos.d/
