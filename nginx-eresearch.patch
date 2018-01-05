@@ -1,64 +1,64 @@
 diff --git a/nginx.spec b/nginx.spec
 --- a/nginx.spec
 +++ b/nginx.spec
-@@ -78,21 +78,12 @@
+@@ -78,12 +78,21 @@
  Source11: nginx-debug.service
  Source12: COPYRIGHT
  Source13: nginx.check-reload.sh
--Source100: headers-more-nginx-module
--Source101: ngx-fancyindex
--Source102: nginx_ajp_module
--Source103: nginx-xslt-html-parser.patch
--Source104: nginx-auth-ldap
--Source105: nginx-http-shibboleth
++Source100: headers-more-nginx-module
++Source101: ngx-fancyindex
++Source102: nginx_ajp_module
++Source103: nginx-xslt-html-parser.patch
++Source104: nginx-auth-ldap
++Source105: nginx-http-shibboleth
 
  License: 2-clause BSD-like license
 
  BuildRoot: %{_tmppath}/%{name}-%{main_version}-%{main_release}-root
  BuildRequires: zlib-devel
  BuildRequires: pcre-devel
--BuildRequires: openldap-devel
--BuildRequires: libxml2-devel
--BuildRequires: libxslt-devel
++BuildRequires: openldap-devel
++BuildRequires: libxml2-devel
++BuildRequires: libxslt-devel
 
  Provides: webserver
 
-@@ -107,12 +98,6 @@
+@@ -98,6 +107,12 @@
  %prep
  %setup -q
  cp %{SOURCE2} .
--cp -R -p %SOURCE100 .
--cp -R -p %SOURCE101 .
--cp -R -p %SOURCE102 .
--patch -p1 < %SOURCE103
--cp -R -p %SOURCE104 .
--cp -R -p %SOURCE105 .
++cp -R -p %SOURCE100 .
++cp -R -p %SOURCE101 .
++cp -R -p %SOURCE102 .
++patch -p1 < %SOURCE103
++cp -R -p %SOURCE104 .
++cp -R -p %SOURCE105 .
  sed -e 's|%%DEFAULTSTART%%|2 3 4 5|g' -e 's|%%DEFAULTSTOP%%|0 1 6|g' \
      -e 's|%%PROVIDES%%|nginx|g' < %{SOURCE2} > nginx.init
  sed -e 's|%%DEFAULTSTART%%||g' -e 's|%%DEFAULTSTOP%%|0 1 2 3 4 5 6|g' \
-@@ -122,12 +107,6 @@
+@@ -107,6 +122,12 @@
  ./configure %{BASE_CONFIGURE_ARGS} \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}" \
--    --with-http_xslt_module \
--    --add-module=%{_builddir}/%{name}-%{version}/ngx-fancyindex \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx_ajp_module \
--    --add-module=%{_builddir}/%{name}-%{version}/headers-more-nginx-module \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx-auth-ldap \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx-http-shibboleth \
++    --with-http_xslt_module \
++    --add-module=%{_builddir}/%{name}-%{version}/ngx-fancyindex \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx_ajp_module \
++    --add-module=%{_builddir}/%{name}-%{version}/headers-more-nginx-module \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx-auth-ldap \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx-http-shibboleth \
      --with-debug
  make %{?_smp_mflags}
  %{__mv} %{bdir}/objs/nginx \
-@@ -135,12 +114,6 @@
+@@ -114,6 +135,12 @@
  ./configure %{BASE_CONFIGURE_ARGS} \
      --with-cc-opt="%{WITH_CC_OPT}" \
      --with-ld-opt="%{WITH_LD_OPT}"
--    --with-http_xslt_module \
--    --add-module=%{_builddir}/%{name}-%{version}/ngx-fancyindex \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx_ajp_module \
--    --add-module=%{_builddir}/%{name}-%{version}/headers-more-nginx-module \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx-auth-ldap \
--    --add-module=%{_builddir}/%{name}-%{version}/nginx-http-shibboleth
++    --with-http_xslt_module \
++    --add-module=%{_builddir}/%{name}-%{version}/ngx-fancyindex \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx_ajp_module \
++    --add-module=%{_builddir}/%{name}-%{version}/headers-more-nginx-module \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx-auth-ldap \
++    --add-module=%{_builddir}/%{name}-%{version}/nginx-http-shibboleth
  make %{?_smp_mflags}
 
  %install
